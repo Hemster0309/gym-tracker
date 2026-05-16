@@ -97,9 +97,10 @@ th, td {
     background-color: #ccc;
     transition: .4s;
     border-radius: 26px;
+    border: 1px solid #000; /* light mode border */
 }
 
-/* Slider circle */
+/* Slider circle (light mode) */
 .slider:before {
     position: absolute;
     content: "";
@@ -107,19 +108,20 @@ th, td {
     width: 20px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
+    background-color: #000;
     transition: .4s;
     border-radius: 50%;
 }
 
-/* When checked (dark mode ON) */
+/* Dark mode ON */
 input:checked + .slider {
-    background-color: #000; /* black background */
+    background-color: #000;
+    border: 1px solid #fff; /* dark mode border */
 }
 
 input:checked + .slider:before {
     transform: translateX(24px);
-    background-color: #fff; /* white circle */
+    background-color: #fff;
 }
 
 /* When NOT checked (light mode) */
