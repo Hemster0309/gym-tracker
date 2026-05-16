@@ -128,6 +128,23 @@ input:checked + .slider:before {
     transform: translateX(16px); /* adjusted for new width */
     background-color: #fff;
 }
+.menu-cell {
+    text-align: right;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    color: inherit;
+}
+
+.menu-btn:hover {
+    opacity: 0.6;
+}
+
 
 body {
     margin: 0;
