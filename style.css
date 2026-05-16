@@ -130,6 +130,7 @@ input:checked + .slider:before {
 }
 .menu-cell {
     text-align: right;
+    width: 30px; /* helps visibility */
 }
 
 .menu-btn {
