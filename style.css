@@ -67,10 +67,11 @@ th, td {
     border-bottom: 1px solid #333;
 }
 
-/* Force transparent cells */
-table, th, td {
-    background-color: transparent !important;
+/* Force cells to inherit table background */
+th, td {
+    background-color: inherit !important;
 }
+
 
 /* Top bar */
 .top-bar {
