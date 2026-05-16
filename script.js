@@ -1,55 +1,58 @@
-body {
-    font-family: Arial;
-    padding: 20px;
-    background: #f5f5f5;
+function addSet() {
+    const exercise = document.getElementById("exercise").value;
+    const weight = document.getElementById("weight").value;
+    const reps = document.getElementById("reps").value;
+
+    if (!exercise || !weight || !reps) return;
+
+    const entry = {
+        date: new Date().toLocaleDateString(),
+        exercise,
+        weight,
+        reps
+    };
+
+    let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
+    logs.push(entry);
+    localStorage.setItem("gymLogs", JSON.stringify(logs));
+
+    addRow(entry);
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+function addRow(entry) {
+    const table = document.getElementById("logTable");
+    const row = table.insertRow(-1);
+
+    row.insertCell(0).innerText = entry.date;
+    row.insertCell(1).innerText = entry.exercise;
+    row.insertCell(2).innerText = entry.weight;
+    row.insertCell(3).innerText = entry.reps;
 }
 
-input {
-    padding: 8px;
-    font-size: 16px;
-}
-
-button {
-    padding: 10px;
-    background: black;
-    color: white;
-    border: none;
-    font-size: 16px;
-}
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    background: white;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+function loadLogs() {
+    const logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
+    logs.forEach(addRow);
 }
 
 // Theme toggle
-const toggleBtn = document.getElementById("themeToggle");
+window.onload = () => {
+    loadLogs();
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-}
+    const toggleBtn = document.getElementById("themeToggle");
 
-toggleBtn.onclick = () => {
-    document.body.classList.toggle("dark");
-
-    // Save preference
-    if (document.body.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
     }
+
+    toggleBtn.onclick = () => {
+        document.body.classList.toggle("dark");
+
+        // Save preference
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    };
 };
