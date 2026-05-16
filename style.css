@@ -67,10 +67,35 @@ th, td {
     border-bottom: 1px solid #333;
 }
 
-/* Force cells to inherit table background */
-th, td {
-    background-color: inherit !important;
+/* Light mode base */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: transparent; /* key */
 }
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: inherit !important; /* inherit from table/row */
+}
+
+/* Dark mode */
+.dark {
+    background: #121212;
+    color: #ffffff;
+}
+
+.dark table {
+    background-color: #1e1e1e; /* dark table background */
+    color: #ffffff;
+}
+
+.dark th, .dark td {
+    border-bottom: 1px solid #333;
+}
+
 
 
 /* Top bar */
