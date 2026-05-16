@@ -76,13 +76,12 @@ th, td {
     font-weight: bold;
 }
 
-/* Switch container (20% smaller) */
+/* Switch container */
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 22px;
-    transform: translateY(1px); /* final alignment fix */
+    width: 36px;   /* smaller width */
+    height: 20px;  /* exact height for perfect centering */
 }
 
 /* Hide checkbox */
@@ -102,7 +101,7 @@ th, td {
     bottom: 0;
     background-color: #fff;
     border: 2px solid #000;
-    border-radius: 22px;
+    border-radius: 20px;
     transition: .3s;
 }
 
@@ -110,10 +109,10 @@ th, td {
 .slider:before {
     content: "";
     position: absolute;
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    top: 2px;
+    height: 14px;   /* circle size */
+    width: 14px;
+    left: 2px;      /* equal padding */
+    top: 2px;       /* equal padding */
     background-color: #000;
     border-radius: 50%;
     transition: .3s;
@@ -126,7 +125,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(18px);
+    transform: translateX(16px); /* adjusted for new width */
     background-color: #fff;
 }
 
