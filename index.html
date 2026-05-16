@@ -15,32 +15,31 @@
 </div>
 
 <div class="page-content">
-    <!-- everything except the top bar goes here -->
+
+    <div class="form">
+        <label>Exercise:</label>
+        <input id="exercise" type="text" placeholder="Bench Press">
+
+        <label>Weight (lbs):</label>
+        <input id="weight" type="number">
+
+        <label>Reps:</label>
+        <input id="reps" type="number">
+
+        <button onclick="addSet()">Add Set</button>
+    </div>
+
+    <h3>Workout Log</h3>
+    <table id="logTable">
+        <tr>
+            <th>Date</th>
+            <th>Exercise</th>
+            <th>Weight</th>
+            <th>Reps</th>
+        </tr>
+    </table>
+
 </div>
-
-
-<div class="form">
-    <label>Exercise:</label>
-    <input id="exercise" type="text" placeholder="Bench Press">
-
-    <label>Weight (lbs):</label>
-    <input id="weight" type="number">
-
-    <label>Reps:</label>
-    <input id="reps" type="number">
-
-    <button onclick="addSet()">Add Set</button>
-</div>
-
-<h3>Workout Log</h3>
-<table id="logTable">
-    <tr>
-        <th>Date</th>
-        <th>Exercise</th>
-        <th>Weight</th>
-        <th>Reps</th>
-    </tr>
-</table>
 
 <script src="script.js"></script>
 </body>
