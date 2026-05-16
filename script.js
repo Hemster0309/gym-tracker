@@ -1,3 +1,4 @@
+console.log("script.js is running");
 function addSet() {
     const exercise = document.getElementById("exercise").value;
     const weight = document.getElementById("weight").value;
