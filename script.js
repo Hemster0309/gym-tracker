@@ -14,7 +14,6 @@ function addSet() {
         reps
     };
 
-    // Save to localStorage
     let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
     logs.push(entry);
     localStorage.setItem("gymLogs", JSON.stringify(logs));
@@ -31,7 +30,6 @@ function addRow(entry) {
     row.insertCell(2).innerText = entry.weight;
     row.insertCell(3).innerText = entry.reps;
 
-    // Dropdown container
     const menuCell = row.insertCell(4);
     menuCell.classList.add("menu-cell");
 
@@ -45,13 +43,11 @@ function addRow(entry) {
     const menu = document.createElement("div");
     menu.className = "dropdown-menu";
 
-    // Edit option
     const editItem = document.createElement("div");
     editItem.className = "dropdown-item";
     editItem.innerText = "Edit Set";
     editItem.onclick = () => editSet(row, entry);
 
-    // Delete option
     const deleteItem = document.createElement("div");
     deleteItem.className = "dropdown-item";
     deleteItem.innerText = "Delete Set";
@@ -69,13 +65,11 @@ function addRow(entry) {
     dropdown.appendChild(menu);
     menuCell.appendChild(dropdown);
 
-    // Toggle dropdown
     btn.onclick = (e) => {
         e.stopPropagation();
         menu.style.display = menu.style.display === "block" ? "none" : "block";
     };
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", () => {
         menu.style.display = "none";
     });
@@ -102,7 +96,6 @@ function loadLogs() {
     logs.forEach(addRow);
 }
 
-// ⭐ FIXED: editSet is now OUTSIDE the theme toggle
 function editSet(row, entry) {
     const newExercise = prompt("Exercise:", entry.exercise);
     const newWeight = prompt("Weight:", entry.weight);
@@ -110,12 +103,10 @@ function editSet(row, entry) {
 
     if (!newExercise || !newWeight || !newReps) return;
 
-    // Update row visually
     row.cells[1].innerText = newExercise;
     row.cells[2].innerText = newWeight;
     row.cells[3].innerText = newReps;
 
-    // Update localStorage
     deleteFromStorage(entry);
 
     const updatedEntry = {
@@ -130,7 +121,6 @@ function editSet(row, entry) {
     localStorage.setItem("gymLogs", JSON.stringify(logs));
 }
 
-// Theme toggle + load logs
 window.onload = () => {
     loadLogs();
 
