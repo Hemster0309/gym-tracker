@@ -31,14 +31,22 @@ button {
 table {
     width: 100%;
     margin-top: 20px;
-    background: white;
     border-collapse: collapse;
+    background-color: transparent;
 }
 
-th, td {
+/* ⭐ Clean merged table cell styling */
+#logTable th,
+#logTable td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     background-color: inherit !important;
+    text-align: center; /* Center everything */
+}
+
+/* ⭐ Keep menu column aligned right */
+#logTable .menu-cell {
+    text-align: right !important;
 }
 
 /* Dark mode */
@@ -59,49 +67,13 @@ th, td {
 }
 
 .dark table {
-    background: #1e1e1e;
-    color: #fff;
-}
-
-.dark th, .dark td {
-    border-bottom: 1px solid #333;
-}
-
-/* Light mode base */
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    background-color: transparent; /* key */
-}
-
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    background-color: inherit !important; /* inherit from table/row */
-}
-
-/* Dark mode */
-.dark {
-    background: #121212;
+    background-color: #1e1e1e;
     color: #ffffff;
 }
 
-.dark table {
-    background-color: #1e1e1e; /* dark table background */
-    color: #ffffff;
-}
-
-.dark th, .dark td {
+.dark #logTable th,
+.dark #logTable td {
     border-bottom: 1px solid #333;
-}
-
-th, td {
-    text-align: center;
-}
-
-.menu-cell {
-    text-align: right !important;
 }
 
 /* Top bar */
@@ -166,7 +138,6 @@ input:checked + .slider:before {
 
 /* Menu cell */
 .menu-cell {
-    text-align: right;
     width: 30px;
 }
 
@@ -248,14 +219,3 @@ input:checked + .slider:before {
     background: #777;
     color: white;
 }
-
-/* Center table content, keep menu on right */
-#logTable th,
-#logTable td {
-    text-align: center;
-}
-
-#logTable .menu-cell {
-    text-align: right !important;
-}
-
