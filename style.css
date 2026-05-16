@@ -64,8 +64,16 @@ th, td {
 }
 
 .dark th, .dark td {
-    border-bottom: 1px solid #333;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: inherit !important;
 }
+
+/* NEW FIX */
+table, th, td {
+    background-color: transparent !important;
+}
+
 
 /* Top bar layout */
 .top-bar {
