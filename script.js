@@ -34,3 +34,22 @@ th, td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
+
+// Theme toggle
+const toggleBtn = document.getElementById("themeToggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+}
+
+toggleBtn.onclick = () => {
+    document.body.classList.toggle("dark");
+
+    // Save preference
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+};
