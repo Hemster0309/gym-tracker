@@ -1,4 +1,5 @@
 console.log("script.js is running");
+
 function addSet() {
     const exercise = document.getElementById("exercise").value;
     const weight = document.getElementById("weight").value;
@@ -30,22 +31,54 @@ function addRow(entry) {
     row.insertCell(2).innerText = entry.weight;
     row.insertCell(3).innerText = entry.reps;
 
-    // Add delete menu
+    // Dropdown container
     const menuCell = row.insertCell(4);
     menuCell.classList.add("menu-cell");
+
+    const dropdown = document.createElement("div");
+    dropdown.className = "dropdown";
 
     const btn = document.createElement("button");
     btn.className = "menu-btn";
     btn.innerText = "⋮";
 
-    btn.onclick = () => {
+    const menu = document.createElement("div");
+    menu.className = "dropdown-menu";
+
+    // Edit option
+    const editItem = document.createElement("div");
+    editItem.className = "dropdown-item";
+    editItem.innerText = "Edit Set";
+    editItem.onclick = () => editSet(row, entry);
+
+    // Delete option
+    const deleteItem = document.createElement("div");
+    deleteItem.className = "dropdown-item";
+    deleteItem.innerText = "Delete Set";
+    deleteItem.onclick = () => {
         if (confirm("Delete this set?")) {
             row.remove();
             deleteFromStorage(entry);
         }
     };
 
-    menuCell.appendChild(btn);
+    menu.appendChild(editItem);
+    menu.appendChild(deleteItem);
+
+    dropdown.appendChild(btn);
+    dropdown.appendChild(menu);
+    menuCell.appendChild(dropdown);
+
+    // Toggle dropdown
+    btn.onclick = (e) => {
+        e.stopPropagation();
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    };
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", () => {
+        menu.style.display = "none";
+    });
 }
 
 function deleteFromStorage(entry) {
@@ -67,6 +100,34 @@ function deleteFromStorage(entry) {
 function loadLogs() {
     const logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
     logs.forEach(addRow);
+}
+
+// ⭐ FIXED: editSet is now OUTSIDE the theme toggle
+function editSet(row, entry) {
+    const newExercise = prompt("Exercise:", entry.exercise);
+    const newWeight = prompt("Weight:", entry.weight);
+    const newReps = prompt("Reps:", entry.reps);
+
+    if (!newExercise || !newWeight || !newReps) return;
+
+    // Update row visually
+    row.cells[1].innerText = newExercise;
+    row.cells[2].innerText = newWeight;
+    row.cells[3].innerText = newReps;
+
+    // Update localStorage
+    deleteFromStorage(entry);
+
+    const updatedEntry = {
+        date: entry.date,
+        exercise: newExercise,
+        weight: newWeight,
+        reps: newReps
+    };
+
+    let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
+    logs.push(updatedEntry);
+    localStorage.setItem("gymLogs", JSON.stringify(logs));
 }
 
 // Theme toggle + load logs
