@@ -1,0 +1,26 @@
+/* Dark mode base */
+.dark {
+    background: #121212;
+    color: #ffffff;
+}
+
+/* Inputs and buttons in dark mode */
+.dark input {
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+.dark button {
+    background: #333;
+    color: #fff;
+}
+
+.dark table {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+.dark th, .dark td {
+    border-bottom: 1px solid #333;
+}
