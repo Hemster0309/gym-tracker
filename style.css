@@ -96,7 +96,13 @@ th, td {
     border-bottom: 1px solid #333;
 }
 
+th, td {
+    text-align: center;
+}
 
+.menu-cell {
+    text-align: right !important;
+}
 
 /* Top bar */
 .top-bar {
