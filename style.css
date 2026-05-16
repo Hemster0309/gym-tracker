@@ -1,6 +1,6 @@
 body {
     font-family: Arial;
-    padding: 20px;
+    padding: 0;
     background: #f5f5f5;
 }
 
@@ -8,6 +8,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.page-content {
+    padding: 20px;
 }
 
 input {
@@ -66,10 +70,12 @@ th, td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    height: 50px;        /* fixes vertical centering */
+    padding: 0 20px;     /* adds spacing without affecting centering */
     font-size: 20px;
     font-weight: bold;
 }
+
 
 /* Switch container (20% smaller) */
 .switch {
