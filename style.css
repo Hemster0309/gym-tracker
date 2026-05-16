@@ -109,8 +109,8 @@ th, td {
 .slider:before {
     content: "";
     position: absolute;
-    height: 14px;   /* circle size */
-    width: 14px;
+    height: 10px;   /* circle size */
+    width: 10px;
     left: 2px;      /* equal padding */
     top: 2px;       /* equal padding */
     background-color: #000;
