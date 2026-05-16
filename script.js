@@ -1,7 +1,8 @@
-console.log("script.js is running");
+// Prevent extension collisions
+window.currentRow = null;
+window.currentEntry = null;
 
-let currentRow = null;
-let currentEntry = null;
+console.log("script.js is running");
 
 function addSet() {
     const exercise = document.getElementById("exercise").value;
@@ -101,8 +102,8 @@ function loadLogs() {
 
 /* ⭐ INLINE EDIT MODE */
 function editSet(row, entry) {
-    currentRow = row;
-    currentEntry = entry;
+    window.currentRow = row;
+    window.currentEntry = entry;
 
     row.cells[1].innerHTML = `<input class="edit-input" value="${entry.exercise}">`;
     row.cells[2].innerHTML = `<input class="edit-input" value="${entry.weight}" type="number">`;
@@ -194,6 +195,7 @@ function restoreMenu(row, entry) {
     });
 }
 
+/* ⭐ THEME + LOAD */
 window.onload = () => {
     console.log("onload fired");
 
@@ -207,7 +209,7 @@ window.onload = () => {
         if (toggle) toggle.checked = true;
     }
 
-    if (!toggle) return; // prevent crash if not found
+    if (!toggle) return;
 
     toggle.addEventListener("change", () => {
         console.log("toggle changed, checked:", toggle.checked);
@@ -221,4 +223,3 @@ window.onload = () => {
         }
     });
 };
-
