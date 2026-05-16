@@ -97,28 +97,30 @@ function loadLogs() {
 }
 
 function editSet(row, entry) {
-    const newExercise = prompt("Exercise:", entry.exercise);
-    const newWeight = prompt("Weight:", entry.weight);
-    const newReps = prompt("Reps:", entry.reps);
+    setTimeout(() => {
+        const newExercise = prompt("Exercise:", entry.exercise);
+        const newWeight = prompt("Weight:", entry.weight);
+        const newReps = prompt("Reps:", entry.reps);
 
-    if (!newExercise || !newWeight || !newReps) return;
+        if (!newExercise || !newWeight || !newReps) return;
 
-    row.cells[1].innerText = newExercise;
-    row.cells[2].innerText = newWeight;
-    row.cells[3].innerText = newReps;
+        row.cells[1].innerText = newExercise;
+        row.cells[2].innerText = newWeight;
+        row.cells[3].innerText = newReps;
 
-    deleteFromStorage(entry);
+        deleteFromStorage(entry);
 
-    const updatedEntry = {
-        date: entry.date,
-        exercise: newExercise,
-        weight: newWeight,
-        reps: newReps
-    };
+        const updatedEntry = {
+            date: entry.date,
+            exercise: newExercise,
+            weight: newWeight,
+            reps: newReps
+        };
 
-    let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
-    logs.push(updatedEntry);
-    localStorage.setItem("gymLogs", JSON.stringify(logs));
+        let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
+        logs.push(updatedEntry);
+        localStorage.setItem("gymLogs", JSON.stringify(logs));
+    }, 0);
 }
 
 window.onload = () => {
