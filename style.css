@@ -249,4 +249,13 @@ input:checked + .slider:before {
     color: white;
 }
 
+/* Center table content, keep menu on right */
+#logTable th,
+#logTable td {
+    text-align: center;
+}
+
+#logTable .menu-cell {
+    text-align: right !important;
+}
 
