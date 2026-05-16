@@ -164,3 +164,35 @@ input:checked + .slider:before {
 .menu-btn:hover {
     opacity: 1;
 }
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    background: inherit;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 5px 0;
+    min-width: 120px;
+    display: none;
+    z-index: 10;
+}
+
+/* Dropdown items */
+.dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: inherit;
+}
+
+.dropdown-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
