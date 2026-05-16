@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gym Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Gym Progress Tracker</h2>
+
+<div class="form">
+    <label>Exercise:</label>
+    <input id="exercise" type="text" placeholder="Bench Press">
+
+    <label>Weight (lbs):</label>
+    <input id="weight" type="number">
+
+    <label>Reps:</label>
+    <input id="reps" type="number">
+
+    <button onclick="addSet()">Add Set</button>
+</div>
+
+<h3>Workout Log</h3>
+<table id="logTable">
+    <tr>
+        <th>Date</th>
+        <th>Exercise</th>
+        <th>Weight</th>
+        <th>Reps</th>
+    </tr>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>
