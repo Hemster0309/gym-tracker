@@ -70,19 +70,19 @@ th, td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;        /* fixes vertical centering */
-    padding: 0 20px;     /* adds spacing without affecting centering */
+    min-height: 40px;   /* auto-adjusts to switch height */
+    padding: 0 20px;
     font-size: 20px;
     font-weight: bold;
 }
-
 
 /* Switch container (20% smaller) */
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;   /* smaller width */
-    height: 22px;  /* slightly taller for perfect centering */
+    width: 40px;
+    height: 22px;
+    margin-top: 2px;    /* fixes mobile centering */
 }
 
 /* Hide checkbox */
