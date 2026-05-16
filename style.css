@@ -112,14 +112,25 @@ th, td {
     border-radius: 50%;
 }
 
-/* When checked */
+/* When checked (dark mode ON) */
 input:checked + .slider {
-    background-color: #4CAF50;
+    background-color: #000; /* black background */
 }
 
 input:checked + .slider:before {
     transform: translateX(24px);
+    background-color: #fff; /* white circle */
 }
+
+/* When NOT checked (light mode) */
+.slider {
+    background-color: #fff; /* white background */
+}
+
+.slider:before {
+    background-color: #000; /* black circle */
+}
+
 
 body {
     margin: 0;
