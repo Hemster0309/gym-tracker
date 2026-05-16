@@ -134,17 +134,17 @@ input:checked + .slider:before {
 }
 
 .menu-btn {
-    background: transparent;
-    border: none;
-    outline: none;
-    box-shadow: none;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+
     font-size: 20px;
     cursor: pointer;
     padding: 0 5px;
     color: inherit;
-    appearance: none;
-    -webkit-appearance: none;
-    opacity: 0.7;
 }
 
 .menu-btn:hover {
