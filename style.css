@@ -71,12 +71,12 @@ th, td {
     font-weight: bold;
 }
 
-/* Smaller switch container */
+/* Switch container (20% smaller) */
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;   /* was 50px */
-    height: 20px;  /* was 26px */
+    width: 40px;   /* smaller width */
+    height: 22px;  /* slightly taller for perfect centering */
 }
 
 /* Hide checkbox */
@@ -86,7 +86,7 @@ th, td {
     height: 0;
 }
 
-/* Slider background */
+/* Slider track */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -95,32 +95,32 @@ th, td {
     right: 0;
     bottom: 0;
     background-color: #fff;
+    border: 2px solid #000;   /* thicker border for clean look */
+    border-radius: 22px;      /* match height */
     transition: .3s;
-    border-radius: 20px; /* match height */
-    border: 1px solid #000;
 }
 
 /* Slider circle */
 .slider:before {
-    position: absolute;
     content: "";
-    height: 14px;   /* was 20px */
-    width: 14px;    /* was 20px */
-    left: 3px;
-    top: 3px;       /* centers it vertically */
+    position: absolute;
+    height: 16px;   /* circle size */
+    width: 16px;
+    left: 2px;      /* perfect centering offset */
+    top: 2px;       /* perfect centering offset */
     background-color: #000;
-    transition: .3s;
     border-radius: 50%;
+    transition: .3s;
 }
 
 /* Dark mode ON */
 input:checked + .slider {
     background-color: #000;
-    border: 1px solid #fff;
+    border-color: #fff;
 }
 
 input:checked + .slider:before {
-    transform: translateX(20px); /* adjusted for smaller width */
+    transform: translateX(18px); /* exact distance for 40px width */
     background-color: #fff;
 }
 
