@@ -1,5 +1,8 @@
 console.log("script.js is running");
 
+let currentRow = null;
+let currentEntry = null;
+
 function addSet() {
     const exercise = document.getElementById("exercise").value;
     const weight = document.getElementById("weight").value;
@@ -96,33 +99,52 @@ function loadLogs() {
     logs.forEach(addRow);
 }
 
+/* ⭐ MODAL EDIT FUNCTION */
 function editSet(row, entry) {
-    setTimeout(() => {
-        const newExercise = prompt("Exercise:", entry.exercise);
-        const newWeight = prompt("Weight:", entry.weight);
-        const newReps = prompt("Reps:", entry.reps);
+    currentRow = row;
+    currentEntry = entry;
 
-        if (!newExercise || !newWeight || !newReps) return;
+    document.getElementById("editExercise").value = entry.exercise;
+    document.getElementById("editWeight").value = entry.weight;
+    document.getElementById("editReps").value = entry.reps;
 
-        row.cells[1].innerText = newExercise;
-        row.cells[2].innerText = newWeight;
-        row.cells[3].innerText = newReps;
-
-        deleteFromStorage(entry);
-
-        const updatedEntry = {
-            date: entry.date,
-            exercise: newExercise,
-            weight: newWeight,
-            reps: newReps
-        };
-
-        let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
-        logs.push(updatedEntry);
-        localStorage.setItem("gymLogs", JSON.stringify(logs));
-    }, 0);
+    document.getElementById("editModal").style.display = "flex";
 }
 
+/* ⭐ SAVE EDIT */
+document.getElementById("saveEdit").onclick = () => {
+    const newExercise = document.getElementById("editExercise").value;
+    const newWeight = document.getElementById("editWeight").value;
+    const newReps = document.getElementById("editReps").value;
+
+    if (!newExercise || !newWeight || !newReps) return;
+
+    currentRow.cells[1].innerText = newExercise;
+    currentRow.cells[2].innerText = newWeight;
+    currentRow.cells[3].innerText = newReps;
+
+    deleteFromStorage(currentEntry);
+
+    const updatedEntry = {
+        date: currentEntry.date,
+        exercise: newExercise,
+        weight: newWeight,
+        reps: newReps
+    };
+
+    let logs = JSON.parse(localStorage.getItem("gymLogs")) || [];
+    logs.push(updatedEntry);
+    localStorage.setItem("gymLogs", JSON.stringify(logs));
+
+    document.getElementById("editModal").style.display = "none";
+};
+
+/* ⭐ CANCEL EDIT */
+document.getElementById("cancelEdit").onclick = () => {
+    document.getElementById("editModal").style.display = "none";
+};
+
+/* ⭐ THEME + LOAD */
 window.onload = () => {
     loadLogs();
 
