@@ -194,18 +194,24 @@ function restoreMenu(row, entry) {
     });
 }
 
-/* ⭐ THEME + LOAD */
 window.onload = () => {
+    console.log("onload fired");
+
     loadLogs();
 
     const toggle = document.getElementById("themeToggle");
+    console.log("toggle element:", toggle);
 
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark");
-        toggle.checked = true;
+        if (toggle) toggle.checked = true;
     }
 
+    if (!toggle) return; // prevent crash if not found
+
     toggle.addEventListener("change", () => {
+        console.log("toggle changed, checked:", toggle.checked);
+
         document.body.classList.toggle("dark");
 
         if (document.body.classList.contains("dark")) {
@@ -215,3 +221,4 @@ window.onload = () => {
         }
     });
 };
+
