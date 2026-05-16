@@ -196,3 +196,61 @@ input:checked + .slider:before {
     background: rgba(255,255,255,0.1);
 }
 
+/* Modal background */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Modal box */
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 85%;
+    max-width: 350px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dark .modal-content {
+    background: #1e1e1e;
+    color: white;
+}
+
+/* Buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+#saveEdit {
+    background: #4caf50;
+    color: white;
+}
+
+#cancelEdit {
+    background: #777;
+    color: white;
+}
+
+
