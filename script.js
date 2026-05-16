@@ -99,25 +99,20 @@ function loadLogs() {
     logs.forEach(addRow);
 }
 
-let currentRow = null;
-let currentEntry = null;
-
+/* ⭐ INLINE EDIT MODE */
 function editSet(row, entry) {
     currentRow = row;
     currentEntry = entry;
 
-    // Convert cells to inputs
     row.cells[1].innerHTML = `<input class="edit-input" value="${entry.exercise}">`;
     row.cells[2].innerHTML = `<input class="edit-input" value="${entry.weight}" type="number">`;
     row.cells[3].innerHTML = `<input class="edit-input" value="${entry.reps}" type="number">`;
 
-    // Replace menu with Save + Cancel
     row.cells[4].innerHTML = `
         <button class="save-btn">Save</button>
         <button class="cancel-btn">Cancel</button>
     `;
 
-    // Save button
     row.querySelector(".save-btn").onclick = () => {
         const newExercise = row.cells[1].querySelector("input").value;
         const newWeight = row.cells[2].querySelector("input").value;
@@ -125,12 +120,10 @@ function editSet(row, entry) {
 
         if (!newExercise || !newWeight || !newReps) return;
 
-        // Update UI
         row.cells[1].innerText = newExercise;
         row.cells[2].innerText = newWeight;
         row.cells[3].innerText = newReps;
 
-        // Update storage
         deleteFromStorage(entry);
 
         const updatedEntry = {
@@ -147,9 +140,7 @@ function editSet(row, entry) {
         restoreMenu(row, updatedEntry);
     };
 
-    // Cancel button
     row.querySelector(".cancel-btn").onclick = () => {
-        // Restore original values
         row.cells[1].innerText = entry.exercise;
         row.cells[2].innerText = entry.weight;
         row.cells[3].innerText = entry.reps;
@@ -159,7 +150,7 @@ function editSet(row, entry) {
 }
 
 function restoreMenu(row, entry) {
-    row.cells[4].innerHTML = ""; // clear cell
+    row.cells[4].innerHTML = "";
 
     const dropdown = document.createElement("div");
     dropdown.className = "dropdown";
@@ -203,5 +194,24 @@ function restoreMenu(row, entry) {
     });
 }
 
+/* ⭐ THEME + LOAD */
+window.onload = () => {
+    loadLogs();
+
+    const toggle = document.getElementById("themeToggle");
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
     });
 };
