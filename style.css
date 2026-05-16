@@ -38,10 +38,10 @@ table {
 th, td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-    background-color: inherit !important; /* NEW — fixes lighter background */
+    background-color: inherit !important;
 }
 
-/* Dark mode styles */
+/* Dark mode */
 .dark {
     background: #121212;
     color: #ffffff;
@@ -64,18 +64,15 @@ th, td {
 }
 
 .dark th, .dark td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    background-color: inherit !important;
+    border-bottom: 1px solid #333;
 }
 
-/* NEW FIX */
+/* Force transparent cells */
 table, th, td {
     background-color: transparent !important;
 }
 
-
-/* Top bar layout */
+/* Top bar */
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -86,7 +83,7 @@ table, th, td {
     font-weight: bold;
 }
 
-/* Switch container */
+/* Switch */
 .switch {
     position: relative;
     display: inline-block;
@@ -94,14 +91,12 @@ table, th, td {
     height: 20px;
 }
 
-/* Hide checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* Slider track */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -115,7 +110,6 @@ table, th, td {
     transition: .3s;
 }
 
-/* Slider circle */
 .slider:before {
     content: "";
     position: absolute;
@@ -128,7 +122,6 @@ table, th, td {
     transition: .3s;
 }
 
-/* Dark mode ON */
 input:checked + .slider {
     background-color: #000;
     border-color: #fff;
@@ -145,7 +138,7 @@ input:checked + .slider:before {
     width: 30px;
 }
 
-/* 3-dot button — fully transparent */
+/* 3-dot button */
 .menu-btn {
     background: transparent !important;
     border: none !important;
@@ -158,20 +151,19 @@ input:checked + .slider:before {
     cursor: pointer;
     padding: 0 5px;
     color: inherit;
-    opacity: 0.7; /* subtle look */
+    opacity: 0.7;
 }
 
 .menu-btn:hover {
     opacity: 1;
 }
 
-/* Dropdown container */
+/* Dropdown */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Dropdown menu */
 .dropdown-menu {
     position: absolute;
     right: 0;
@@ -185,7 +177,6 @@ input:checked + .slider:before {
     z-index: 10;
 }
 
-/* Dropdown items */
 .dropdown-item {
     padding: 8px 12px;
     cursor: pointer;
@@ -196,59 +187,32 @@ input:checked + .slider:before {
     background: rgba(255,255,255,0.1);
 }
 
-/* Modal background */
-.modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-/* Modal box */
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    width: 85%;
-    max-width: 350px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.dark .modal-content {
-    background: #1e1e1e;
-    color: white;
-}
-
-/* Buttons */
-.modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.modal-buttons button {
-    flex: 1;
-    margin: 0 5px;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
+/* Inline edit inputs */
+.edit-input {
+    width: 90%;
+    padding: 5px;
     font-size: 16px;
+    background: transparent;
+    border: 1px solid #555;
+    color: inherit;
 }
 
-#saveEdit {
+/* Save / Cancel buttons */
+.save-btn, .cancel-btn {
+    padding: 6px 10px;
+    margin-left: 4px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
     background: #4caf50;
     color: white;
 }
 
-#cancelEdit {
+.cancel-btn {
     background: #777;
     color: white;
 }
